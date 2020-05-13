@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import Feladat from '../components/feladat'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
@@ -10,13 +11,14 @@ class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
-
+      const [author] = get(this, 'props.data.allContentfulPerson.edges')
+    const feladat = get(this, 'props.data.allContentfulFeladat.edges')
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <Hero data={author.node} />
+          <Feladat data={feladat.edges} />
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">
@@ -39,6 +41,13 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
+    allContentfulFeladat(sort: {}) {
+        edges {
+            node {
+                cim
+            }
+        }
+    }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {

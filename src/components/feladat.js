@@ -1,13 +1,15 @@
 import React from 'react'
 import Img from 'gatsby-image'
 
-import styles from './hero.module.css'
+import styles from './feladat.module.css'
+
 
 export default ({ data }) => (
-    <div className={styles.hero}>
-      <h3 className={styles.heroHeadline}>{data.cim}</h3>
-      <div className={styles.heroDetails}>
-      <p>{data.torzs}</p>
-      </div>
+    <div className={styles.feladat}>
+    <h3 className={styles.previewTitle}>{data.cim}</h3>
+    <p  dangerouslySetInnerHTML={{
+      __html: data.torzs.childMarkdownRemark.html,
+    }}/>
+    <p> {data.szint}</p>
     </div>
 )

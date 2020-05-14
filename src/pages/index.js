@@ -9,42 +9,54 @@ import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-      const [author] = get(this, 'props.data.allContentfulPerson.edges')
-    const feladat = get(this, 'props.data.allContentfulFeladat.edges')
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <Feladat data={feladat.edges} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
-      </Layout>
-    )
+      /* const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+       * const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+       * const [author] = get(this, 'props.data.allContentfulPerson.edges')*/
+      const feladat = get(this, 'props.data.allContentfulFeladat.edges')
+      console.log(feladat)
+      return (
+          <Layout location={this.props.location}>
+              <div style={{ background: '#fff' }}>
+                  <div className="wrapper">
+                  {feladat.map(({ node}) => {
+                       return (
+                           <div key={node.id}>
+                               <Feladat data={node} />
+                           </div>
+                  )
+                  })}
+                      {/* <h2 className="section-headline">Recent articles</h2>
+                          <ul className="article-list">
+                          {posts.map(({ node }) => {
+                          return (
+                          <li key={node.slug}>
+                          <ArticlePreview article={node} />
+                          </li>
+                          )
+                          })}
+                          </ul> */}
+                  </div>
+              </div>
+          </Layout>
+      )
   }
 }
 
 export default RootIndex
 
 export const pageQuery = graphql`
-  query HomeQuery {
-    allContentfulFeladat(sort: {}) {
+query HomeQuery {
+    allContentfulFeladat(limit:2) {
         edges {
             node {
                 cim
+                szint
+                torzs {
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+                id
             }
         }
     }

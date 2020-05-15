@@ -1,15 +1,41 @@
 import React from 'react'
+import jsPDF from 'jspdf'
 
 export default class PrintButton extends React.Component {
-    handleClick = event => {
+    onClick = event => {
       event.preventDefault()
-      console.log("button pushed")
-      alert("Button pushed")
+      var doc = new jsPDF();
+
+      console.log(this.printarea.current)
+      // var elementHTML = this.printarea.current.html();
+      // var specialElementHandlers = {
+      //   '#elementH': function (element, renderer) {
+      //     return true;
+      //   }
+      // };
+      // doc.fromHTML(elementHTML, 15, 15, {
+      //   'width': 170,
+      //   'elementHandlers': specialElementHandlers
+      // });
+
+      // Save the PDF
+      //doc.save('sample-document.pdf');
+
+
     }
+
+  constructor(props) {
+    super(props);
+    this.printarea = React.createRef();
+    this.onClick = this.onClick.bind(this)
+  }
 
     render() {
       return (
-          <button onClick={this.handleClick}>Print to PDF</button>
+        <div>
+          <button onClick={this.onClick}>Print to PDF</button>
+          <div className="dropzone"  ref={this.printarea}></div>
+        </div>
       )
     }
   }

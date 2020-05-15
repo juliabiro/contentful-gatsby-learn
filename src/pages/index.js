@@ -1,12 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-/* import Helmet from 'react-helmet'*/
 import Feladat from '../components/feladat'
-import Dropzone from '../components/dropzone'
 import Layout from '../components/layout'
 import {enable_dragging} from '../components/dropping.js'
-import PrintButton from '../components/printtopdfbutton.js'
+import Printing from '../components/printtopdfbutton.js'
 
 class RootIndex extends React.Component {
   componentDidMount() {
@@ -21,14 +19,15 @@ class RootIndex extends React.Component {
           <Layout location={this.props.location}>
               <div style={{ background: '#fff' }}>
                   <div className="wrapper">
+                      <div className="startzone">
                       {feladat.map(({ node}) => {
                            console.log(node)
                            return (
                                    <Feladat data={node} key={node.id} />
                            )
                       })}
-                      <PrintButton/>
-                      <Dropzone/>
+                      </div>
+                      <Printing/>
                           {/* <h2 className="section-headline">Recent articles</h2>
                               <ul className="article-list">
                               {posts.map(({ node }) => {

@@ -9,12 +9,14 @@ import {enable_dragging} from '../components/dropping.js'
 
 
 class RootIndex extends React.Component {
+  componentDidMount() {
+        enable_dragging()
+  }
   render() {
       /* const siteTitle = get(this, 'props.data.site.siteMetadata.title')
        * const posts = get(this, 'props.data.allContentfulBlogPost.edges')
        * const [author] = get(this, 'props.data.allContentfulPerson.edges')*/
       const feladat = get(this, 'props.data.allContentfulFeladat.edges')
-      enable_dragging()
       return (
           <Layout location={this.props.location}>
               <div style={{ background: '#fff' }}>

@@ -1,0 +1,25 @@
+
+.drag_drop {
+    display: inline-block;
+    min-width: 40px;
+    padding: 2em 0.5em;
+
+    color: #fff;
+    background-color: #29e;
+    border: solid 2px #fff;
+
+    touch-action: none;
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+
+    transition: background-color 0.3s;
+}
+
+.drag_drop.can_drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+.dropped {
+    background-color: #ff0;
+}

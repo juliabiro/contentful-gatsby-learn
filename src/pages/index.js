@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
-import Hero from '../components/hero'
+/* import Helmet from 'react-helmet'*/
 import Feladat from '../components/feladat'
+import Dropzone from '../components/dropzone'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+
 
 class RootIndex extends React.Component {
   render() {
@@ -13,30 +13,30 @@ class RootIndex extends React.Component {
        * const posts = get(this, 'props.data.allContentfulBlogPost.edges')
        * const [author] = get(this, 'props.data.allContentfulPerson.edges')*/
       const feladat = get(this, 'props.data.allContentfulFeladat.edges')
-      console.log(feladat)
       return (
           <Layout location={this.props.location}>
               <div style={{ background: '#fff' }}>
                   <div className="wrapper">
-                  {feladat.map(({ node}) => {
-                       return (
-                           <div key={node.id}>
-                               <Feladat data={node} />
-                           </div>
-                  )
-                  })}
-                      {/* <h2 className="section-headline">Recent articles</h2>
-                          <ul className="article-list">
-                          {posts.map(({ node }) => {
-                          return (
-                          <li key={node.slug}>
-                          <ArticlePreview article={node} />
-                          </li>
-                          )
-                          })}
-                          </ul> */}
+                      {feladat.map(({ node}) => {
+                           console.log(node)
+                           return (
+                                   <Feladat data={node} key={node.id} />
+                           )
+                      })}
+
+                      <Dropzone/>
+                          {/* <h2 className="section-headline">Recent articles</h2>
+                              <ul className="article-list">
+                              {posts.map(({ node }) => {
+                              return (
+                              <li key={node.slug}>
+                              <ArticlePreview article={node} />
+                              </li>
+                              )
+                              })}
+                              </ul> */}
+                      </div>
                   </div>
-              </div>
           </Layout>
       )
   }

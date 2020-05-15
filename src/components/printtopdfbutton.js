@@ -7,19 +7,19 @@ export default class PrintButton extends React.Component {
       var doc = new jsPDF();
 
       console.log(this.printarea.current)
-      // var elementHTML = this.printarea.current.html();
-      // var specialElementHandlers = {
-      //   '#elementH': function (element, renderer) {
-      //     return true;
-      //   }
-      // };
-      // doc.fromHTML(elementHTML, 15, 15, {
-      //   'width': 170,
-      //   'elementHandlers': specialElementHandlers
-      // });
+      var elementHTML = this.printarea.current;
+      var specialElementHandlers = {
+        '#elementH': function (element, renderer) {
+          return true;
+        }
+      };
+      doc.fromHTML(elementHTML, 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+      });
 
       // Save the PDF
-      //doc.save('sample-document.pdf');
+      doc.save('sample-document.pdf');
 
 
     }

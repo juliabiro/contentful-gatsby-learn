@@ -6,7 +6,7 @@ import Feladat from '../components/feladat'
 import Dropzone from '../components/dropzone'
 import Layout from '../components/layout'
 import {enable_dragging} from '../components/dropping.js'
-
+import PrintButton from '../components/printtopdfbutton.js'
 
 class RootIndex extends React.Component {
   componentDidMount() {
@@ -27,7 +27,7 @@ class RootIndex extends React.Component {
                                    <Feladat data={node} key={node.id} />
                            )
                       })}
-
+                      <PrintButton/>
                       <Dropzone/>
                           {/* <h2 className="section-headline">Recent articles</h2>
                               <ul className="article-list">

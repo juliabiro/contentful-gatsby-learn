@@ -1,5 +1,28 @@
+.draggable {
+    touch-action:none;
+}
+.dropzone {
+    height: 340px;
+    background-color: #ccc;
+    border: dashed 4px transparent;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    width: 80%;
+    transition: background-color 0.3s;
+}
 
-.drag_drop {
+.drop-active {
+    border-color: #aaa;
+}
+
+.drop-target {
+    background-color: #29e;
+    border-color: #fff;
+    border-style: solid;
+}
+
+.drag-drop {
     display: inline-block;
     min-width: 40px;
     padding: 2em 0.5em;
@@ -15,7 +38,7 @@
     transition: background-color 0.3s;
 }
 
-.drag_drop.can_drop {
+.drag-drop.can-drop {
     color: #000;
     background-color: #4e4;
 }

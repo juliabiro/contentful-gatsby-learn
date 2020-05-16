@@ -1,10 +1,15 @@
 import React from 'react'
-import jsPDF from 'jspdf'
 
 export default class PrintButton extends React.Component {
+
+  componentDidMount() {
+    var jsPDF = require('jspdf')
+    this.doc = new jsPDF();
+    console.log(jsPDF)
+    console.log(this.doc)
+  }
     onClick = event => {
       event.preventDefault()
-      var doc = new jsPDF();
 
       console.log(this.printarea.current)
       var elementHTML = this.printarea.current;
@@ -13,13 +18,13 @@ export default class PrintButton extends React.Component {
           return true;
         }
       };
-      doc.fromHTML(elementHTML, 15, 15, {
+      this.doc.fromHTML(elementHTML, 15, 15, {
         'width': 170,
         'elementHandlers': specialElementHandlers
       });
 
       // Save the PDF
-      doc.save('sample-document.pdf');
+      this.doc.save('sample-document.pdf');
 
 
     }

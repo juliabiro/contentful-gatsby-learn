@@ -69,11 +69,15 @@ query HomeQuery {
                     }
                 }
                 kepek {
-                    file {
-                        url
-                    }
-                    id
                     title
+            fluid(
+              maxWidth: 500
+              maxHeight: 150
+              resizingBehavior: PAD
+              background: "rgb:000000"
+            ) {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
                 }
             }
         }

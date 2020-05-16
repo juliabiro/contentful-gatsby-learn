@@ -5,14 +5,13 @@ export default class PrintButton extends React.Component {
   componentDidMount() {
     var jsPDF = require('jspdf')
     this.doc = new jsPDF();
-    console.log(jsPDF)
-    console.log(this.doc)
   }
     onClick = event => {
       event.preventDefault()
 
       console.log(this.printarea.current)
       var elementHTML = this.printarea.current;
+      // TODO needs bashe64 encoding, otherwise images break it
       var specialElementHandlers = {
         '#elementH': function (element, renderer) {
           return true;

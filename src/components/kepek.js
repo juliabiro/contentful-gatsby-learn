@@ -1,3 +1,4 @@
+import Img from 'gatsby-image'
 import React from 'react'
 
 export default function renderKepek(kepek) {
@@ -6,7 +7,12 @@ export default function renderKepek(kepek) {
     return (<div></div>)
   }
 
-  return(
-    kepek.map( k => <img src={k.file.url} alt={k.title} key={k.id} height="100" width="100"/>)
-  )
+return(kepek.map( k =>
+                  <Img
+                  alt={k.title}
+                  fluid={k.fluid}
+                  key={k.title}
+                  />
+                )
+      )
 }

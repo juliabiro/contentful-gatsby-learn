@@ -49,9 +49,10 @@ export default RootIndex
 
 export const pageQuery = graphql`
 query HomeQuery {
-    allContentfulFeladat(limit:2) {
+    allContentfulFeladat(limit:20) {
         edges {
             node {
+                id
                 cim
                 szint
                 torzs {
@@ -59,7 +60,21 @@ query HomeQuery {
                         html
                     }
                 }
-                id
+                szerzo {
+                    nev
+                }
+                cimkek{
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+                kepek {
+                    file {
+                        url
+                    }
+                    id
+                    title
+                }
             }
         }
     }

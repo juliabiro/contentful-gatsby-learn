@@ -2,7 +2,7 @@
     touch-action:none;
 }
 .dropzone {
-    height: 340px;
+    min-height: 240px;
     background-color: #ccc;
     border: dashed 4px transparent;
     border-radius: 4px;
@@ -44,5 +44,51 @@
 }
 
 .dropped {
+    background-color: #ff0;
+}
+
+.startzone {
+    height: 140px;
+    background-color: #ccc;
+    border: dashed 4px transparent;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    width: 80%;
+    transition: background-color 0.3s;
+}
+
+.park-active {
+    border-color: #aaa;
+}
+
+.park-target {
+    background-color: #29e;
+    border-color: #fff;
+    border-style: solid;
+}
+
+.drag-park {
+    display: inline-block;
+    min-width: 40px;
+    padding: 2em 0.5em;
+
+    color: #fff;
+    background-color: #29e;
+    border: solid 2px #fff;
+
+    touch-action: none;
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+
+    transition: background-color 0.3s;
+}
+
+.drag-park.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+.parked {
     background-color: #ff0;
 }

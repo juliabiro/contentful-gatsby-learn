@@ -49,9 +49,10 @@ export default RootIndex
 
 export const pageQuery = graphql`
 query HomeQuery {
-    allContentfulFeladat(limit:2) {
+    allContentfulFeladat(limit:20) {
         edges {
             node {
+                id
                 cim
                 szint
                 torzs {
@@ -59,7 +60,26 @@ query HomeQuery {
                         html
                     }
                 }
-                id
+                szerzo {
+                    nev
+                }
+                cimkek{
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+                kepek {
+                    title
+                    fluid(
+                    maxWidth: 300,
+                    resizingBehavior: SCALE,
+                        background: "rgb:000000",
+                        quality: 100,
+
+                    ) {
+                        ...GatsbyContentfulFluid
+                    }
+                }
             }
         }
     }
@@ -71,8 +91,8 @@ query HomeQuery {
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+              fluid(maxWidth: 350, resizingBehavior: SCALE, quality:100) {
+              ...GatsbyContentfulFluid
             }
           }
           description {

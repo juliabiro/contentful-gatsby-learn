@@ -4,30 +4,35 @@ export default class PrintButton extends React.Component {
 
   componentDidMount() {
     var jsPDF = require('jspdf')
-    this.doc = new jsPDF();
-    console.log(jsPDF)
-    console.log(this.doc)
+    this.doc = new jsPDF('p', 'pt', 'a4');
   }
-    onClick = event => {
-      event.preventDefault()
+  onClick = event => {
+    event.preventDefault()
 
-      console.log(this.printarea.current)
-      var elementHTML = this.printarea.current;
-      var specialElementHandlers = {
-        '#elementH': function (element, renderer) {
-          return true;
-        }
-      };
-      this.doc.fromHTML(elementHTML, 15, 15, {
-        'width': 170,
-        'elementHandlers': specialElementHandlers
-      });
-
-      // Save the PDF
-      this.doc.save('sample-document.pdf');
+    console.log(this.printarea.current)
+    var elementHTML = this.printarea.current;
+    // TODO needs base64 encoding, otherwise images break it
 
 
+
+    var specialElementHandlers = {
+      '#elementH': function (element, renderer) {
+        return true;
+      }
     }
+
+    var doc = this.doc;
+    doc.fromHTML(elementHTML, 15, 15, {
+      'width': 170,
+      'elementHandlers': specialElementHandlers
+    },
+
+                      function () {
+                        doc.save()
+                      }
+                     )
+
+  }
 
   constructor(props) {
     super(props);

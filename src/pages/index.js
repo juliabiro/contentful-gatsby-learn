@@ -70,14 +70,15 @@ query HomeQuery {
                 }
                 kepek {
                     title
-            fluid(
-              maxWidth: 500
-              maxHeight: 150
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
+                    fluid(
+                    maxWidth: 300,
+                    resizingBehavior: SCALE,
+                        background: "rgb:000000",
+                        quality: 100,
+
+                    ) {
+                        ...GatsbyContentfulFluid
+                    }
                 }
             }
         }
@@ -90,8 +91,8 @@ query HomeQuery {
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+              fluid(maxWidth: 350, resizingBehavior: SCALE, quality:100) {
+              ...GatsbyContentfulFluid
             }
           }
           description {

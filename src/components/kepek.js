@@ -7,12 +7,8 @@ export default function renderKepek(kepek) {
     return (<div></div>)
   }
 
-return(kepek.map( k =>
-                  <Img
-                  alt={k.title}
-                  fluid={k.fluid}
-                  key={k.title}
-                  />
+  return(kepek.map( k =>
+                    <img key={k.title} src={k.fluid.src} alt={k.title} witdh="200px"/>
                 )
       )
 }

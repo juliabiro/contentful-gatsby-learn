@@ -2,7 +2,7 @@
     touch-action:none;
 }
 .dropzone {
-    min-height: 540px;
+    min-height: 940px;
     background-color: #ccc;
     border: dashed 4px transparent;
     border-radius: 4px;
